@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh -T git@github.com -o ConnectTimeout=5)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
