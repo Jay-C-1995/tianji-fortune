@@ -1,0 +1,468 @@
+/* === CSS Variables === */
+:root {
+    --red: #C41E3A;
+    --red-dark: #9B1B30;
+    --gold: #D4A017;
+    --gold-light: #F0D060;
+    --bg-dark: #1A1410;
+    --bg-card: #231D17;
+    --bg-input: #2A221C;
+    --border: #3D3228;
+    --text: #E8DCC8;
+    --text-dim: #9B8E7C;
+    --text-bright: #FFF8E7;
+    --radius: 8px;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* === Reset & Base === */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    background: var(--bg-dark);
+    color: var(--text);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.bg-pattern {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(196, 30, 58, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(212, 160, 23, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(212, 160, 23, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/* === Header === */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0 20px;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 16px;
+    text-shadow: 0 0 40px rgba(212, 160, 23, 0.3);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+}
+
+/* === Main Layout === */
+.main-content {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* === Cards === */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+}
+
+.card-title {
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 2px;
+}
+
+/* === Form === */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-bright);
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(212, 160, 23, 0.15);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: var(--red);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+.error-msg {
+    display: block;
+    font-size: 12px;
+    color: var(--red);
+    margin-top: 4px;
+    min-height: 18px;
+}
+
+.char-count {
+    display: block;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: right;
+    margin-top: 4px;
+}
+
+.optional-tag {
+    font-size: 11px;
+    color: var(--text-dim);
+    background: var(--bg-input);
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 0;
+}
+
+/* === Radio Group === */
+.radio-group {
+    display: flex;
+    gap: 16px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text);
+    position: relative;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.radio-label:has(input:checked) {
+    border-color: var(--gold);
+    background: rgba(212, 160, 23, 0.08);
+    color: var(--gold);
+}
+
+.radio-label input {
+    display: none;
+}
+
+/* === Submit Button === */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--red), var(--red-dark));
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-family: inherit;
+    letter-spacing: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-top: 6px;
+    position: relative;
+}
+
+.btn-submit:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.btn-submit:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+}
+
+/* === Result Area === */
+.result-area {
+    min-height: 400px;
+}
+
+/* === Loading === */
+.loading {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.yinyang-spinner {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: conic-gradient(var(--gold) 0deg 180deg, var(--bg-card) 180deg 360deg);
+    animation: spin 2s linear infinite;
+    box-shadow: 0 0 20px rgba(212, 160, 23, 0.3);
+    position: relative;
+}
+
+.yinyang-spinner::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: var(--bg-card);
+    border-radius: 50%;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 28px 0 0 var(--gold);
+}
+
+.loading p {
+    color: var(--text-dim);
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+/* === Result Cards === */
+.result-cards {
+    animation: fadeIn 0.5s ease;
+}
+
+.badge-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.badge-zodiac {
+    background: rgba(212, 160, 23, 0.15);
+    color: var(--gold-light);
+    border: 1px solid rgba(212, 160, 23, 0.3);
+}
+
+.badge-element {
+    background: rgba(100, 180, 120, 0.15);
+    color: #7CD490;
+    border: 1px solid rgba(100, 180, 120, 0.3);
+}
+
+.badge-category {
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.badge-category.great { background: rgba(200, 40, 60, 0.8); border-color: var(--red); }
+.badge-category.good { background: rgba(212, 160, 23, 0.6); border-color: var(--gold); }
+.badge-category.ok { background: rgba(120, 140, 160, 0.5); border-color: #788CA0; }
+.badge-category.bad { background: rgba(100, 100, 100, 0.5); border-color: #666; }
+
+/* === Score Bar === */
+.score-section {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    padding: 14px 18px;
+    background: var(--bg-input);
+    border-radius: 6px;
+}
+
+.score-label {
+    font-size: 13px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
+
+.score-bar-container {
+    flex: 1;
+    height: 10px;
+    background: var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.score-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--red), var(--gold), #4CAF50);
+    border-radius: 5px;
+    transition: width 1s ease;
+}
+
+.score-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+    min-width: 36px;
+    text-align: right;
+}
+
+/* === Reading Card === */
+.reading-card {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin-bottom: 14px;
+}
+
+.reading-card h3 {
+    font-size: 15px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+}
+
+.reading-text {
+    font-size: 14px;
+    line-height: 2;
+    color: var(--text);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.model-info {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: right;
+}
+
+/* === Error Card === */
+.error-card {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.error-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.error-text {
+    color: var(--red);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.btn-retry {
+    padding: 10px 28px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    letter-spacing: 2px;
+    transition: background 0.2s;
+}
+
+.btn-retry:hover {
+    background: rgba(212, 160, 23, 0.1);
+}
+
+/* === Empty State === */
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.bagua-icon {
+    font-size: 64px;
+    color: var(--border);
+    margin-bottom: 18px;
+}
+
+.empty-state p {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+/* === Footer === */
+.footer {
+    text-align: center;
+    padding: 40px 0 10px;
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+
+/* === Utility === */
+.hidden { display: none !important; }
+
+/* === Animations === */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

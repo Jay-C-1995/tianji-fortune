@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天机算命 — AI 易经算命</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">天 机 算 命</h1>
+            <p class="subtitle">AI-Powered Fortune Telling · 易经八字 · 生肖五行</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Input Card -->
+            <section class="card input-card">
+                <h2 class="card-title">请输入您的信息</h2>
+                <form id="fortune-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" placeholder="请输入您的姓名"
+                               maxlength="20" required autocomplete="off">
+                        <span class="error-msg" id="name-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birth_date">出生日期</label>
+                        <input type="date" id="birth_date" name="birth_date" required>
+                        <span class="error-msg" id="date-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>性别</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="male" checked>
+                                <span class="radio-custom"></span>
+                                男
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="female">
+                                <span class="radio-custom"></span>
+                                女
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="other">
+                                <span class="radio-custom"></span>
+                                其他
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="question">您的问题 <span class="optional-tag">可选</span></label>
+                        <textarea id="question" name="question" rows="3"
+                                  placeholder="例如：我明年的财运如何？"
+                                  maxlength="200"></textarea>
+                        <span class="char-count"><span id="char-num">0</span>/200</span>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submit-btn">
+                        <span class="btn-text">开 始 算 命</span>
+                        <span class="btn-spinner hidden" id="btn-spinner"></span>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Result Area -->
+            <section class="result-area" id="result-area">
+                <!-- Loading State -->
+                <div class="loading hidden" id="loading">
+                    <div class="yinyang-spinner"></div>
+                    <p>正在推算命理，请稍候...</p>
+                </div>
+
+                <!-- Result Cards -->
+                <div class="result-cards hidden" id="result-cards">
+                    <div class="badge-row">
+                        <div class="badge badge-zodiac" id="badge-zodiac"></div>
+                        <div class="badge badge-element" id="badge-element"></div>
+                        <div class="badge badge-category" id="badge-category"></div>
+                    </div>
+
+                    <div class="score-section">
+                        <span class="score-label">运势评分</span>
+                        <div class="score-bar-container">
+                            <div class="score-bar" id="score-bar"></div>
+                        </div>
+                        <span class="score-value" id="score-value">0</span>
+                    </div>
+
+                    <div class="reading-card">
+                        <h3>运势解读</h3>
+                        <div class="reading-text" id="reading-text"></div>
+                    </div>
+
+                    <p class="model-info" id="model-info"></p>
+                </div>
+
+                <!-- Error State -->
+                <div class="error-card hidden" id="error-card">
+                    <p class="error-icon">&#10060;</p>
+                    <p class="error-text" id="error-text"></p>
+                    <button class="btn-retry" id="btn-retry">重新尝试</button>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state">
+                    <div class="bagua-icon">&#9775;</div>
+                    <p>输入您的信息，点击「开始算命」<br>即可获取专属运势解读</p>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p>仅供娱乐参考 · 命由己造，福自我求 · AI Generated Content</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
