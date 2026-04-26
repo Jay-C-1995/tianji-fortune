@@ -62,17 +62,19 @@ def generate_fallback_reading(context: dict) -> str:
     )
 
 
-def generate_fortune_reading(context: dict) -> tuple[str, str]:
+def generate_fortune_reading(context: dict, model: str = None) -> tuple[str, str]:
+    if model is None:
+        model = MODEL
     prompt = build_prompt(context)
     try:
         response = requests.post(
             OLLAMA_URL,
-            json={"model": MODEL, "prompt": prompt, "stream": False},
+            json={"model": model, "prompt": prompt, "stream": False},
             timeout=TIMEOUT,
         )
         if response.status_code == 200:
             result = response.json()
-            return result.get("response", "").strip(), MODEL
+            return result.get("response", "").strip(), model
         return generate_fallback_reading(context), "rule_based"
     except requests.exceptions.RequestException:
         return generate_fallback_reading(context), "rule_based"

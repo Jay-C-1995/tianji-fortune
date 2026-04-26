@@ -26,7 +26,7 @@ def fortune(request: FortuneRequest):
     context["gender"] = request.gender
     context["question"] = request.question
 
-    reading, model_used = generate_fortune_reading(context)
+    reading, model_used = generate_fortune_reading(context, request.model)
 
     return FortuneResponse(
         zodiac=context["zodiac"],

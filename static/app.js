@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const birthDate = document.getElementById("birth_date").value;
         const gender = form.querySelector("input[name='gender']:checked")?.value;
         const question = document.getElementById("question").value.trim() || null;
+        const model = document.getElementById("model").value;
 
         let hasError = false;
 
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch("/api/fortune", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, birth_date: birthDate, gender, question }),
+                body: JSON.stringify({ name, birth_date: birthDate, gender, question, model }),
             });
 
             if (!response.ok) {

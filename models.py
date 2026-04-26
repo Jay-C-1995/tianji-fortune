@@ -8,6 +8,7 @@ class FortuneRequest(BaseModel):
     birth_date: str = Field(description="出生日期，格式 YYYY-MM-DD")
     gender: str = Field(description="性别", pattern="^(male|female|other)$")
     question: Optional[str] = Field(default=None, max_length=200, description="具体问题")
+    model: str = Field(default="gemma4:e4b", description="Ollama 模型名称")
 
     @field_validator("birth_date")
     @classmethod
